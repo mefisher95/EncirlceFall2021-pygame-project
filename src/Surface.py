@@ -29,14 +29,14 @@ class Surface:
         return None
 
     def draw(self, iterable : list) -> None: 
-        self.surface().lock()
+        # self.surface().lock()
         self.clear()
 
         for obj in iterable:
             obj.draw()
 
         pygame.display.flip()
-        self.surface().unlock()
+        # self.surface().unlock()
 
         self.__clock.tick(self.__fps)
 
