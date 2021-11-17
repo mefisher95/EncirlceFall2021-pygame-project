@@ -19,10 +19,8 @@ def main():
     while True:
         ### Event Handling ###
         for event in pygame.event.get():
-            if event.type == pygame.QUIT: 
-                print("quit code: ", pygame.QUIT)
-                sys.exit()
-
+            if event.type == pygame.QUIT: sys.exit()
+            
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LSHIFT: surface.set_size((500, 500))
                 if event.key == pygame.K_RSHIFT: surface.set_size(consants.SIZE)
