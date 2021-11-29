@@ -1,7 +1,7 @@
 import pygame, sys
 from random import randint
 from pygame import constants
-from AquaAlien import AquaAlien
+from AquaAlien import AquaAlien, AquaFleet
 
 from BaseObject import BaseObject
 from Laser import Laser, Lasers
@@ -11,6 +11,8 @@ from Player import Player
 from Stars import Star, Stars
 from AlienBaseObject import AlienBaseObject
 
+from ObjectContainer import ObjectContainer, collide_container
+from general_functions import collide
 
 def main():
     surface = Surface(consants.SIZE, "My new Title", 60)
@@ -19,10 +21,10 @@ def main():
     player = Player(surface)
     lasers = Lasers()
 
-    alien = AquaAlien(surface, 100, 100)
+    aquafleet = AquaFleet(surface)
     stars = Stars(surface)
 
-    worldObj = [player, alien, lasers, stars]
+    worldObj = [player, aquafleet, lasers, stars]
 
     while True:
         ### Event Handling ###
@@ -42,6 +44,9 @@ def main():
         # alien.move()
         # lasers.move()
         # stars.move()
+
+        collide_container(lasers, aquafleet)
+
 
         for items in worldObj:
             items.move()

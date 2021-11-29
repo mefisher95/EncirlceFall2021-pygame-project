@@ -1,3 +1,3 @@
-SIZE = width, height = 640, 480
+SIZE = width, height = 640, 800
 
 ## colors

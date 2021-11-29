@@ -1,4 +1,5 @@
 from AlienBaseObject import AlienBaseObject
+from ObjectContainer import ObjectContainer
 from Surface import Surface
 import pygame
 
@@ -15,10 +16,20 @@ class AquaAlien(AlienBaseObject):
 
         self.speed = 2.14
 
-    def draw(self):
-        self.surface.surface().blit(self.image, self.rect)
 
     def attack(self): pass
 
     def move(self): pass
+
+
+class AquaFleet(ObjectContainer):
+    def __init__(self, surface) -> None:
+        super().__init__()
+
+        # self.objects = [ AquaAlien(surface, 100 + x * 32, 50) for x in range(10)]
         
+        for i in range(15):
+            self.objects.append(AquaAlien(surface, 100 + i * 32, 50))
+
+        for i in range(15):
+            self.objects.append(AquaAlien(surface, 100 + i * 32, 100))

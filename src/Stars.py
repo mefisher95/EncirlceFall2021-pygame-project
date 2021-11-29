@@ -2,6 +2,7 @@ import pygame
 from random import randint
 
 from BaseObject import BaseObject
+from ObjectContainer import ObjectContainer
 from Surface import Surface
 from consants import *
 
@@ -59,15 +60,13 @@ class Star(BaseObject):
         pygame.draw.rect(self.surface.surface(), self.color, self.rect)
         
 
-class Stars:
+class Stars(ObjectContainer):
     def __init__(self, surface) -> None:
-        self.stars = [ Star(surface) for i in range(100) ]
+        super().__init__()
+        self.objects = [ Star(surface) for i in range(100) ]
         return None
 
     def move(self):
-        for star in self.stars: star.move()
+        for obj in self.objects: obj.move()
+    
 
-    def draw(self):
-        for star in self.stars: star.draw()
-
-    def __len__(self): return len(self.stars)

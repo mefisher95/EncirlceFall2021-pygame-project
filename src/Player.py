@@ -40,7 +40,6 @@ class Player(BaseObject):
             self.y -= self.speed
 
     def left_x(self):
-        print(self.x, self.rect.x)
         if self.x <= 10: 
             self.x = 10
         else:
@@ -55,10 +54,6 @@ class Player(BaseObject):
 
     def move(self): 
         keys = pygame.key.get_pressed()
-
-        dictionary = { 'a' : True, 'b' : False }
-        dictionary['a']
-        # print(keys)
 
         if keys[pygame.K_w] and keys[pygame.K_a]:
             self.up_y()

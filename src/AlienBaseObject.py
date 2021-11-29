@@ -8,8 +8,11 @@ class AlienBaseObject(BaseObject):
         self.image = None
         self.rect = None
         self.speed = 0
-        self.alive = False
+        self.alive = True
 
     def move(self): pass
     def attack(self): pass
-    def draw(self): pass
+
+    def draw(self): 
+        if self.is_alive():
+            self.surface.surface().blit(self.image, self.rect)

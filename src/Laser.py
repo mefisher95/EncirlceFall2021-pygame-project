@@ -1,6 +1,7 @@
 import Surface, pygame, colors
 from pygame import Rect
 from BaseObject import BaseObject
+from ObjectContainer import ObjectContainer
 
 class Laser(BaseObject):
     def __init__(self, surface: Surface, x: float, y: float) -> None:
@@ -27,24 +28,8 @@ class Laser(BaseObject):
         if self.y < 0: self.kill()
         return None
 
-class Lasers:
+class Lasers(ObjectContainer):
     def __init__(self) -> None:
-        self.lasers = []
-        return None
-
-    def draw(self) -> None:
-        for laser in self.lasers: laser.draw()
-        return None
-
-    def move(self) -> None:
-        for laser in self.lasers: laser.move()
-        self.lasers = [ laser for laser in self.lasers if laser.is_alive() ]
-        return None
-
-    def add(self, laser: Laser) -> None:
-        self.lasers.append(laser)
-        return None
-
-    def __len__(self) -> int: return len(self.lasers)
+        super().__init__()
 
     
