@@ -27,6 +27,32 @@ class Player(BaseObject):
         return Laser(self.surface, laser_x, laser_y)
 
 
+    def down_y(self):
+        if self.rect.y + self.rect.h >= height - 50:
+            self.y = height - self.rect.h - 50
+        else:
+            self.y += self.speed
+
+    def up_y(self):
+        if self.rect.y <= height / 2:
+            self.y = height / 2
+        else:
+            self.y -= self.speed
+
+    def left_x(self):
+        print(self.x, self.rect.x)
+        if self.x <= 10: 
+            self.x = 10
+        else:
+            self.x -= self.speed
+
+    def right_x(self):
+        if self.rect.x + self.rect.w >= width - 10:
+            self.x = width - self.rect.w - 10
+        else:
+            self.x += self.speed
+
+
     def move(self): 
         keys = pygame.key.get_pressed()
 
@@ -34,15 +60,27 @@ class Player(BaseObject):
         dictionary['a']
         # print(keys)
 
-        if keys[pygame.K_w] and keys[pygame.K_a]: x, y = -1, -1
-        elif keys[pygame.K_w] and keys[pygame.K_d]: x, y =  1, -1
-        elif keys[pygame.K_s] and keys[pygame.K_a]: x, y = -1, 1
-        elif keys[pygame.K_s] and keys[pygame.K_d]: x, y = 1, 1
-        elif keys[pygame.K_w]: x, y = 0, -1
-        elif keys[pygame.K_a]: x, y = -1, 0
-        elif keys[pygame.K_s]: x, y = 0, 1
-        elif keys[pygame.K_d]: x, y = 1, 0
+        if keys[pygame.K_w] and keys[pygame.K_a]:
+            self.up_y()
+            self.left_x()
+        elif keys[pygame.K_w] and keys[pygame.K_d]: 
+            self.up_y()
+            self.right_x()
+        elif keys[pygame.K_s] and keys[pygame.K_a]: 
+            self.left_x()
+            self.down_y()
+        elif keys[pygame.K_s] and keys[pygame.K_d]: 
+            self.down_y()
+            self.right_x()
+        elif keys[pygame.K_w]: 
+            self.up_y()
+        elif keys[pygame.K_a]: 
+            self.left_x()
+        elif keys[pygame.K_s]: 
+            self.down_y()
+        elif keys[pygame.K_d]: 
+            self.right_x()
         else: return 
 
-        self.x += x * self.speed; self.y += y * self.speed
-        self.rect.x, self.rect.y = self.x, self.y
+        self.rect.x = self.x
+        self.rect.y = self.y
