@@ -4,7 +4,7 @@ from random import randint
 from BaseObject import BaseObject
 from ObjectContainer import ObjectContainer
 from Surface import Surface
-from consants import *
+from constants import *
 
 class Star(BaseObject):
     def __init__(self, surface: Surface, x: float = 0, y: float = 0) -> None:
