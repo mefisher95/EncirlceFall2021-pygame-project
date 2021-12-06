@@ -20,8 +20,7 @@ class Player(BaseObject):
         # pygame.draw.rect(self.surface.surface(), self.color, self.rect)
         if self.is_alive():
             self.surface.surface().blit(self.image, self.rect)
-        else:
-            input()
+
 
             
     def shoot(self):
