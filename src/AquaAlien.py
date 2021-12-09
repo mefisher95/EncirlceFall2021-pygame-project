@@ -47,8 +47,6 @@ class AquaFleet(ObjectContainer):
         self.lasers = lasers
         self.delay = 30
 
-        # self.objects = [ AquaAlien(surface, 100 + x * 32, 50) for x in range(10)]
-        
         for i in range(15):
             self.objects.append(AquaAlien(surface, 100 + i * 32, 50))
 

@@ -1,7 +1,10 @@
-import Surface, pygame
+import pygame
+
+from constants import width, height
+
+import Surface
 from Laser import Laser
 from BaseObject import BaseObject
-from constants import width, height
 
 class Player(BaseObject):
     def __init__(self, surface: Surface, x: float = (width / 2), y: float = height - 100) -> None:
@@ -13,16 +16,12 @@ class Player(BaseObject):
         self.rect.y = y
         self.x = self.rect.x
 
-        # self.color = list(color)
         self.speed = 3.14
 
     def draw(self):
-        # pygame.draw.rect(self.surface.surface(), self.color, self.rect)
         if self.is_alive():
             self.surface.surface().blit(self.image, self.rect)
 
-
-            
     def shoot(self):
         laser_x = self.x + self.rect.w / 2
         laser_y = self.y - 5
